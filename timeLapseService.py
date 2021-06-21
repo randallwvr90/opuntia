@@ -9,7 +9,7 @@ class TimeLapseService():
     
     def captureImage(self, imgNumber) -> str:
         fileName = 'image{}.jpg'.format(str(imgNumber).zfill(3))
-        errorCode = os.system("raspistill -o images/{}".format(fileName))
+        errorCode = os.system("raspistill -o {}".format(fileName))
         if errorCode > 0:
             raise Exception("No image captured")
         return fileName
