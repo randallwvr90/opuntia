@@ -12,10 +12,7 @@ def main():
     PAUSE_TIME = 20
 
     tls = TimeLapseService(pauseTime = PAUSE_TIME, frames = FRAMES)
-    ds = DriveService()
-    returncode = ds.push('images/imagexxx.jpg')
-    print('output: ' + str(returncode))
-    #tls.mainLoop()
+    tls.mainLoop()
 
 if __name__ == "__main__":
     main()
