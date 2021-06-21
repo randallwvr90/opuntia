@@ -2,6 +2,7 @@
 *.jpg
 images/
 .vscode/
+.gd/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

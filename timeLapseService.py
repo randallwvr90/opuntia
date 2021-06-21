@@ -24,6 +24,6 @@ class TimeLapseService():
             startTime = time.time()
             errorCode = gdrive.push(fileName)
             endTime = time.time()
-            print('push took{s} seconds and returned error code {e}'.format(s=str(endTime - startTime)),e=errorCode)
+            print('push took{s} seconds and returned error code {err}'.format(s=str(endTime - startTime),err=str(errorCode)))
             time.sleep(self.pauseTime - 6) #Takes roughly 6 seconds to take a picture - how does this square with drive?
         print("Time Lapse complete with {} frames captured".format(str(self.frames)))
