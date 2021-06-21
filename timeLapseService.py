@@ -7,19 +7,19 @@ class TimeLapseService():
         self.pauseTime = pauseTime
         self.frames = frames
     
-    def captureImage(self, imgNumber):
-        imgNumber = str(imgNumber).zfill(3)
-        errorCode = os.system("raspistill -o images/image%s.jpg"%(imgNumber))
+    def captureImage(self, imgNumber) -> str:
+        fileName = 'image{}.jpg'.format(str(imgNumber).zfill(3))
+        errorCode = os.system("raspistill -o images/{}".format(fileName))
         if errorCode > 0:
             raise Exception("No image captured")
+        return fileName
 
     def mainLoop(self):
         # gets images, calls driveService object method push() to send to google drive
         gdrive = DriveService()
         thisFrame = 0
         while thisFrame < self.frames:
-            self.captureImage(thisFrame)
-            fileName = 'image{}.jpg'.format(time.time())
+            fileName = self.captureImage(thisFrame)
             thisFrame += 1
             startTime = time.time()
             errorCode = gdrive.push(fileName)
