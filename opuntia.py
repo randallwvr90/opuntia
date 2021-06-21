@@ -1,3 +1,4 @@
+from driveService import DriveService
 from timeLapseService import TimeLapseService
 
 # drive push -no-prompt <filepath>
@@ -7,11 +8,14 @@ from timeLapseService import TimeLapseService
 
 def main():
     #Constants
-    FRAMES = 200
-    PAUSE_TIME = 120
+    FRAMES = 2
+    PAUSE_TIME = 20
 
     tls = TimeLapseService(pauseTime = PAUSE_TIME, frames = FRAMES)
-    tls.mainLoop()
+    ds = DriveService()
+    returncode = ds.push('images/imagexxx.jpg')
+    print('output: ' + str(returncode))
+    #tls.mainLoop()
 
 if __name__ == "__main__":
     main()
